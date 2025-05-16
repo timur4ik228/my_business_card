@@ -1,0 +1,82 @@
+{% extends "base.html" %} {% block content %}
+<h2>Редактирование визитной карточки</h2>
+<form method="POST" class="edit-form">
+	<div class="form-group">
+		<label for="name">Имя:</label>
+		<input
+			type="text"
+			id="name"
+			name="name"
+			value="{{ card.name if card else '' }}"
+			required
+		/>
+	</div>
+
+	<div class="form-group">
+		<label for="position">Должность:</label>
+		<input
+			type="text"
+			id="position"
+			name="position"
+			value="{{ card.position if card else '' }}"
+		/>
+	</div>
+
+	<div class="form-group">
+		<label for="company">Компания:</label>
+		<input
+			type="text"
+			id="company"
+			name="company"
+			value="{{ card.company if card else '' }}"
+		/>
+	</div>
+
+	<div class="form-group">
+		<label for="email">Email:</label>
+		<input
+			type="email"
+			id="email"
+			name="email"
+			value="{{ card.email if card else '' }}"
+		/>
+	</div>
+
+	<div class="form-group">
+		<label for="phone">Телефон:</label>
+		<input
+			type="tel"
+			id="phone"
+			name="phone"
+			value="{{ card.phone if card else '' }}"
+		/>
+	</div>
+
+	<div class="form-group">
+		<label for="address">Адрес:</label>
+		<input
+			type="text"
+			id="address"
+			name="address"
+			value="{{ card.address if card else '' }}"
+		/>
+	</div>
+
+	<div class="form-group">
+		<label for="about">Обо мне:</label>
+		<textarea id="about" name="about">
+{{ card.about if card else '' }}</textarea
+		>
+	</div>
+
+	<div class="form-group">
+		<label for="skills">Навыки (через запятую):</label>
+		<textarea id="skills" name="skills">
+{{ card.skills if card else '' }}</textarea
+		>
+	</div>
+
+	<button type="submit" class="btn">Сохранить</button>
+	<a href="{{ url_for('index') }}" class="btn cancel">Отмена</a>
+</form>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block content %} {% if card %}
+<div class="stats">
+	<h3>Статистика посещений</h3>
+	<p>Всего посещений: {{ visit_count }}</p>
+	<p>Уникальных посетителей: {{ unique_visitors }}</p>
+</div>
+<div class="business-card">
+	<div class="card-header">
+		<h2>{{ card.name }}</h2>
+		<p class="position">{{ card.position }}</p>
+		<p class="company">{{ card.company }}</p>
+	</div>
+
+	<div class="card-body">
+		<div class="about">
+			<h3>Обо мне</h3>
+			<p>{{ card.about }}</p>
+		</div>
+
+		<div class="contacts">
+			<h3>Контакты</h3>
+			<p><strong>Email:</strong> {{ card.email }}</p>
+			<p><strong>Телефон:</strong> {{ card.phone }}</p>
+			<p><strong>Адрес:</strong> {{ card.address }}</p>
+		</div>
+
+		<div class="skills">
+			<h3>Навыки</h3>
+			<ul>
+				{% for skill in card.skills_list %}
+				<li>{{ skill }}</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+</div>
+{% else %}
+<p>Визитная карточка не найдена. <a href="{{ url_for('edit') }}">Создать</a></p>
+{% endif %} {% endblock %}
